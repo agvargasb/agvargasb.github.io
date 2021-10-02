@@ -221,20 +221,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js'></script>
     <script src="assets/js/particle.js"></script>
+    <script language="JavaScript" type="text/javascript"
+    src="https://kjur.github.io/jsrsasign/jsrsasign-latest-all-min.js">
+    </script>
+    <script>
+        function decodeJwtResponse(sJWT) {
+            var payloadObj = KJUR.jws.JWS.readSafeJSONString(b64utoutf8(sJWT.split(".")[1]));
+            return payloadObj;
+        }
+    </script>
     <script>
         function handleCredentialResponse(response) {
            // decodeJwtResponse() is a custom function defined by you
            // to decode the credential response.
             
-            // const responsePayload = decodeJwtResponse(response.credential);
+            const responsePayload = decodeJwtResponse(response.credential);
       
-            console.log(response.credential)
-            // console.log("ID: " + responsePayload.sub);
-            // console.log('Full Name: ' + responsePayload.name);
-            // console.log('Given Name: ' + responsePayload.given_name);
-            // console.log('Family Name: ' + responsePayload.family_name);
-            // console.log("Image URL: " + responsePayload.picture);
-            // console.log("Email: " + responsePayload.email);
+            // console.log(response.credential)
+            console.log("ID: " + responsePayload.sub);
+            console.log('Full Name: ' + responsePayload.name);
+            console.log('Given Name: ' + responsePayload.given_name);
+            console.log('Family Name: ' + responsePayload.family_name);
+            console.log("Image URL: " + responsePayload.picture);
+            console.log("Email: " + responsePayload.email);
         }
       </script>
 
